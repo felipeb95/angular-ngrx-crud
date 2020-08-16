@@ -10,7 +10,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { StoreRouterConnectingModule, routerReducer, RouterStateSerializer } from '@ngrx/router-store';
+import { CustomSerializer } from './shared/utils';
+
 
 @NgModule({
   declarations: [
@@ -21,13 +23,14 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({router: routerReducer}),
+    StoreRouterConnectingModule.forRoot({stateKey: 'router'}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     StoreRouterConnectingModule.forRoot(),
     HttpClientModule
   ],
-  providers: [],
+  providers: [{provide: RouterStateSerializer, useClass: CustomSerializer}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
