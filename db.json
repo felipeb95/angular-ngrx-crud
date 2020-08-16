@@ -10,9 +10,23 @@
     {
       "name": "Mary Johnson",
       "phone": "808937482734",
-      "address": "893 Main Voulevard",
+      "address": "896 Main Voulevard",
       "membership": "Pro",
       "id": 2
+    },
+    {
+      "name": "Felipe",
+      "phone": "12345678",
+      "address": "Hola",
+      "membership": "Pro",
+      "id": 3
+    },
+    {
+      "name": "Carlos",
+      "phone": "123131",
+      "address": "Dendo",
+      "membership": "Basic",
+      "id": 4
     }
   ]
 }
